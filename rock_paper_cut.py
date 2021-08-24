@@ -8,6 +8,7 @@ print('Start..........................')
 data={'stone':5,'paper':5,'scissors':5}
 full_game=15
 arr=['stone','paper','scissors']
+computer_points,your_points=0,0
 while True:
     val=input('Enter value :- ')
     rand=random.choice(arr)
@@ -19,10 +20,12 @@ while True:
                 print('Your Computer win')
                 print('paper is win')
                 data['stone']-=1
+                computer_points+=1
             elif val=='stone' and rand=='scissors':
                 print('Your win')
                 print('stone is win')
                 data['stone'] -= 1
+                your_points+=1
         else:
             print('stones is complete please choose paper or scissors')
         if data['paper'] > 0:
@@ -30,10 +33,12 @@ while True:
                 print('Your win')
                 print('paper is win')
                 data['paper'] -= 1
+                your_points+=1
             elif val=='paper' and rand=='scissors':
                 print('Your computer win')
                 print('scissors is win')
                 data['paper'] -= 1
+                computer_points+=1
         else:
             print('paprs is complete please choose paper or scissors')
         if data['scissors'] > 0:
@@ -41,13 +46,21 @@ while True:
                 print('Your win')
                 print('scissors is win')
                 data['scissors'] -= 1
+                your_points+=1
             elif val == 'scissors' and rand == 'stone':
                 print('Your computer win')
                 print('stone is win')
                 data['scissors'] -= 1
+                computer_points+=1
         else:
             print('scissors is complete please choose paper or scissors')
         if full_game == 0: break
     else:
         print('not match')
+if your_points>computer_points:
+    print('Your win')
+elif your_points==computer_points:
+    print('no one win the game')
+else:
+    print('your computer win')
 print('Game Finished')
